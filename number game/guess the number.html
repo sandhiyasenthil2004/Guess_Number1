@@ -1,0 +1,91 @@
+<head>
+    <title>Game</title>
+    <link rel="stylesheet" href="guess.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div>
+    <nav>
+        <ul id="navbar">
+           
+            <a href="mailto:aarthielumalaimaha@gmail.com"><i class="fa fa-fw fa-envelope"></i>  <li>Contact Us</li></a>
+        </ul>  
+    </nav>
+</div>
+<img src="thinking.png">
+
+<h2>Guess The number</h2>
+<input id="guessnumber">
+<button onclick="check()">Check</button>
+<p id="result">You Are Wrong/Right</p>
+<p id="score">Score:10</p>
+<script>
+    var guessnumber=document.getElementById("guessnumber")
+    var result=document.getElementById("result")
+    var score=document.getElementById("score") 
+    var randomNumber=Math.floor(Math.random()*9)+1
+    console.log(randomNumber)
+    var totalscore=10
+   
+    function check()
+    {
+        var enternumber=guessnumber.value
+        if (/^\d$/.test(enternumber))
+        {
+            enternumber = parseInt(enternumber, 10);
+            if(randomNumber==enternumber)
+            {
+            console.log("Right")
+            result.textContent="Right"
+            styledAlert(" Congratulations...Aarthi...You Won")
+            score.textContent="your total score is"+totalscore
+            styledAlert( score.textContent="your total score is"+totalscore)
+
+            }
+          
+            else
+            {
+            console.log("Wrong")
+            totalscore=totalscore-1
+            score.textContent="score:"+totalscore
+            result.textContent="Wrong"
+            }
+         }
+         else{
+            styledAlert("Please enter a single-digit integer.");
+         }
+         function styledAlert(message) 
+         {
+            var alertDiv = document.createElement("div");
+            alertDiv.style.backgroundColor = "lightblue";
+            alertDiv.style.padding = "5px";
+            alertDiv.style.borderRadius = "5px";
+            alertDiv.style.textAlign = "center";
+            alertDiv.textContent = message;
+            alertDiv.style.color="black";
+            alertDiv.style.fontSize="20px";
+
+
+        // Append the styled alert to the body
+            document.body.appendChild(alertDiv);
+
+        // Remove the alert after 2 seconds (2000 milliseconds)
+        setTimeout(function () {
+             document.body.removeChild(alertDiv);
+        }, 2700);
+         
+         }
+    
+       
+        
+
+
+            
+    }
+       
+
+            
+
+        
+
+    
+</script>
